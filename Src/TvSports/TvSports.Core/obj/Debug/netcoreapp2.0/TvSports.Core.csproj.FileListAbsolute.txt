@@ -1,0 +1,9 @@
+C:\Users\pierr\source\repos\TvSports\Src\TvSports\TvSports.Core\obj\Debug\netcoreapp2.0\TvSports.Core.csproj.CoreCompileInputs.cache
+C:\Users\pierr\source\repos\TvSports\Src\TvSports\TvSports.Core\obj\Debug\netcoreapp2.0\TvSports.Core.AssemblyInfoInputs.cache
+C:\Users\pierr\source\repos\TvSports\Src\TvSports\TvSports.Core\obj\Debug\netcoreapp2.0\TvSports.Core.AssemblyInfo.cs
+C:\Users\pierr\source\repos\TvSports\Src\TvSports\TvSports.Core\obj\Debug\netcoreapp2.0\TvSports.Core.csprojResolveAssemblyReference.cache
+C:\Users\pierr\source\repos\TvSports\Src\TvSports\TvSports.Core\bin\Debug\netcoreapp2.0\TvSports.Core.deps.json
+C:\Users\pierr\source\repos\TvSports\Src\TvSports\TvSports.Core\bin\Debug\netcoreapp2.0\TvSports.Core.dll
+C:\Users\pierr\source\repos\TvSports\Src\TvSports\TvSports.Core\bin\Debug\netcoreapp2.0\TvSports.Core.pdb
+C:\Users\pierr\source\repos\TvSports\Src\TvSports\TvSports.Core\obj\Debug\netcoreapp2.0\TvSports.Core.dll
+C:\Users\pierr\source\repos\TvSports\Src\TvSports\TvSports.Core\obj\Debug\netcoreapp2.0\TvSports.Core.pdb
