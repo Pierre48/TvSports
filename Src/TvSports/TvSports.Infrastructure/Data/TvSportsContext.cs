@@ -62,27 +62,21 @@ namespace TvSports.Infrastructure.Data
         private void ConfigureSport(EntityTypeBuilder<Sport> builder)
         {
             builder.ToTable("Sport");
-            builder.HasKey(m => m.Id);
             builder.Property(ci => ci.Id)
-                .ForNpgsqlUseSequenceHiLo("Source_hilo")
+                .ForNpgsqlUseSequenceHiLo("Sport_hilo")
                 .IsRequired();
             builder.HasIndex(u => u.Name)
                  .IsUnique();
-            builder.Property(ci => ci.Name)
-                 .HasMaxLength(100);
         }
 
         private void ConfigureParticipantBase(EntityTypeBuilder<ParticipantBase> builder)
         {
             builder.ToTable("Participant");
-            builder.HasKey(m => m.Id);
             builder.Property(ci => ci.Id)
-                .ForNpgsqlUseSequenceHiLo("Source_hilo")
+                .ForNpgsqlUseSequenceHiLo("Participant_hilo")
                 .IsRequired();
             builder.HasIndex(u => u.Name)
                  .IsUnique();
-            builder.Property(ci => ci.Name)
-                 .HasMaxLength(100);
         }
 
         //
@@ -92,50 +86,37 @@ namespace TvSports.Infrastructure.Data
         private void ConfigureMatch(EntityTypeBuilder<Match> builder)
         {
             builder.ToTable("Match");
-            builder.HasKey(m => m.Id);
             builder.Property(ci => ci.Id)
-                .ForNpgsqlUseSequenceHiLo("Source_hilo")
+                .ForNpgsqlUseSequenceHiLo("Match_hilo")
                 .IsRequired();
         }
 
         private void ConfigureCompetition(EntityTypeBuilder<Competition> builder)
         {
             builder.ToTable("Competition");
-            builder.HasKey(m => m.Id);
             builder.Property(ci => ci.Id)
-                .ForNpgsqlUseSequenceHiLo("Source_hilo")
+                .ForNpgsqlUseSequenceHiLo("Competition_hilo")
                 .IsRequired();
-            builder.HasIndex(u => u.Name)
-                 .IsUnique();
-            builder.Property(ci => ci.Name)
-                 .HasMaxLength(100);
         }
 
         private void ConfigureZone(EntityTypeBuilder<Zone> builder)
         {
             builder.ToTable("Zone");
-            builder.HasKey(m => m.Id);
             builder.Property(ci => ci.Id)
-                .ForNpgsqlUseSequenceHiLo("Source_hilo")
+                .ForNpgsqlUseSequenceHiLo("Zone_hilo")
                 .IsRequired();
             builder.HasIndex(u => u.Name)
                  .IsUnique();
-            builder.Property(ci => ci.Name)
-                 .HasMaxLength(50);
         }
 
         private void ConfigureChannel(EntityTypeBuilder<Channel> builder)
         {
-            builder.ToTable("Chanel");
-            builder.HasKey(m => m.Id);
+            builder.ToTable("Channel");
             builder.Property(ci => ci.Id)
-                .ForNpgsqlUseSequenceHiLo("Chanel_hilo")
+                .ForNpgsqlUseSequenceHiLo("Channel_hilo")
                 .IsRequired();
-
             builder.HasIndex(u => u.Name)
                  .IsUnique();
-            builder.Property(ci => ci.Name)
-                 .HasMaxLength(50);
         }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)

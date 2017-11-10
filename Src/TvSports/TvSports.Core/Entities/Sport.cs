@@ -8,6 +8,7 @@ namespace TvSports.Core.Entities
     public class Sport : EntityBase
     {
         [Required]
+        [StringLength(50)]
         public  string Name{ get; set; }
     }
 }
