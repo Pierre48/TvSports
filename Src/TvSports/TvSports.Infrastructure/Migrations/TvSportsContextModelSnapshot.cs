@@ -127,6 +127,8 @@ namespace TvSports.Infrastructure.Migrations
                         .HasAnnotation("Npgsql:HiLoSequenceName", "Game_hilo")
                         .HasAnnotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.SequenceHiLo);
 
+                    b.Property<int>("CompetitionInstanceId");
+
                     b.Property<DateTime>("EndDate");
 
                     b.Property<int>("ParticipantAwayForeignKey");
@@ -140,6 +142,8 @@ namespace TvSports.Infrastructure.Migrations
                     b.Property<DateTime>("StartDate");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("CompetitionInstanceId");
 
                     b.HasIndex("ParticipantAwayForeignKey");
 
@@ -293,6 +297,11 @@ namespace TvSports.Infrastructure.Migrations
 
             modelBuilder.Entity("TvSports.Core.Entities.Game", b =>
                 {
+                    b.HasOne("TvSports.Core.Entities.CompetitionInstance", "CompetitionInstance")
+                        .WithMany()
+                        .HasForeignKey("CompetitionInstanceId")
+                        .OnDelete(DeleteBehavior.Cascade);
+
                     b.HasOne("TvSports.Core.Entities.ParticipantBase", "ParticipantAway")
                         .WithMany()
                         .HasForeignKey("ParticipantAwayForeignKey")

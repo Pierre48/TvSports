@@ -15,6 +15,18 @@ namespace TvGames.Core.Services
         {
         }
 
+        public IEnumerable<Game> GetGames(DateTime date, string sport, string zone)
+        {
+            return _repository.List(new DayGameSpecification(date, sport, zone),new string[] {
+            "ParticipantHome",
+            "ParticipantAway",
+            "CompetitionInstance",
+            "CompetitionInstance.Competition",
+            "CompetitionInstance.Competition.Sport",
+            "CompetitionInstance.Competition.Zone" });
+
+        }
+
         public IEnumerable<DateTime> GetPassedDayWithoutResult()
         {
             return _repository.List(new PassedGameWithoutScoreSpecification()).Select(g => g.StartDate.Date).Distinct();

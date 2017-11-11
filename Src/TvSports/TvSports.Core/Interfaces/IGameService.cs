@@ -8,5 +8,6 @@ namespace TvSports.Core.Interfaces
     public interface IGameService : IService<Game>
     {
         IEnumerable<DateTime> GetPassedDayWithoutResult();
+        IEnumerable<Game> GetGames(DateTime date, string sport, string zone);
     }
 }

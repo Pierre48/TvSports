@@ -71,7 +71,7 @@ namespace TvSports.Crawler.Crawlers.NbaNet
                 var schedule = await _nbaNetService.GetTeamSchedule(_season, team.Value.UrlName);
                 schedule?.League.Standard.ForEach(gameJson =>
                 {
-                    var game = GameAdapter.FromJson(gameJson, _teams);
+                    var game = GameAdapter.FromJson(gameJson, _teams,_nba);
                     _gameService.CreateOrUpdate<Core.Entities.Game>(game, g =>
                          g.ParticipantAwayForeignKey == game.ParticipantAwayForeignKey &&
                          g.ParticipantHomeForeignKey == game.ParticipantHomeForeignKey &&

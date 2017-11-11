@@ -22,5 +22,8 @@ namespace TvSports.Core.Entities
         public int ParticipantHomeForeignKey { get; set; }
         [Required]
         public int ParticipantAwayForeignKey { get; set; }
+        public int CompetitionInstanceId { get; set; }
+        [ForeignKey(nameof(CompetitionInstanceId))]
+        public CompetitionInstance CompetitionInstance { get; internal set; }
     }
 }

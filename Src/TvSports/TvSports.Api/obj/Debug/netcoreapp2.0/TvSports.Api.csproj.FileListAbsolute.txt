@@ -1,0 +1,15 @@
+C:\Users\pierr\source\repos\TvSports\Src\TvSports\TvSports.Api\obj\Debug\netcoreapp2.0\TvSports.Api.csprojResolveAssemblyReference.cache
+C:\Users\pierr\source\repos\TvSports\Src\TvSports\TvSports.Api\obj\Debug\netcoreapp2.0\TvSports.Api.csproj.CoreCompileInputs.cache
+C:\Users\pierr\source\repos\TvSports\Src\TvSports\TvSports.Api\obj\Debug\netcoreapp2.0\TvSports.Api.AssemblyInfoInputs.cache
+C:\Users\pierr\source\repos\TvSports\Src\TvSports\TvSports.Api\obj\Debug\netcoreapp2.0\TvSports.Api.AssemblyInfo.cs
+C:\Users\pierr\source\repos\TvSports\Src\TvSports\TvSports.Api\bin\Debug\netcoreapp2.0\TvSports.Api.deps.json
+C:\Users\pierr\source\repos\TvSports\Src\TvSports\TvSports.Api\bin\Debug\netcoreapp2.0\TvSports.Api.runtimeconfig.json
+C:\Users\pierr\source\repos\TvSports\Src\TvSports\TvSports.Api\bin\Debug\netcoreapp2.0\TvSports.Api.runtimeconfig.dev.json
+C:\Users\pierr\source\repos\TvSports\Src\TvSports\TvSports.Api\bin\Debug\netcoreapp2.0\TvSports.Api.dll
+C:\Users\pierr\source\repos\TvSports\Src\TvSports\TvSports.Api\bin\Debug\netcoreapp2.0\TvSports.Api.pdb
+C:\Users\pierr\source\repos\TvSports\Src\TvSports\TvSports.Api\bin\Debug\netcoreapp2.0\TvSports.Core.dll
+C:\Users\pierr\source\repos\TvSports\Src\TvSports\TvSports.Api\bin\Debug\netcoreapp2.0\TvSports.Core.pdb
+C:\Users\pierr\source\repos\TvSports\Src\TvSports\TvSports.Api\obj\Debug\netcoreapp2.0\TvSports.Api.dll
+C:\Users\pierr\source\repos\TvSports\Src\TvSports\TvSports.Api\obj\Debug\netcoreapp2.0\TvSports.Api.pdb
+C:\Users\pierr\source\repos\TvSports\Src\TvSports\TvSports.Api\bin\Debug\netcoreapp2.0\TvSports.Infrastructure.dll
+C:\Users\pierr\source\repos\TvSports\Src\TvSports\TvSports.Api\bin\Debug\netcoreapp2.0\TvSports.Infrastructure.pdb

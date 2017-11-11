@@ -1,0 +1,8 @@
+version: '3'
+
+services:
+  tvsports.api:
+    image: tvsports.api
+    build:
+      context: ./TvSports.Api
+      dockerfile: Dockerfile

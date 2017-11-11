@@ -1,0 +1,11 @@
+services:
+  tvsports.api:
+    build:
+      context: C:\Users\pierr\source\repos\TvSports\Src\TvSports\TvSports.Api
+      dockerfile: Dockerfile
+    environment:
+      ASPNETCORE_ENVIRONMENT: Development
+    image: tvsports.api
+    ports:
+    - 80/tcp
+version: '3.0'

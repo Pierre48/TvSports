@@ -80,9 +80,14 @@ namespace TvSports.Infrastructure.Data
             return await _dbContext.Set<T>().ToListAsync();
         }
 
-        public IEnumerable<T> List(ISpecification<T> spec)
+        public IEnumerable<T> List(ISpecification<T> spec, params string[] includes)
         {
-            return ListQueryable(spec).AsQueryable();
+            var set = ListQueryable(spec);
+            includes?.ForEach(i =>
+            {
+                set = set.Include(i);
+            });
+            return set.AsQueryable();
         }
 
         private IQueryable<T> ListQueryable(ISpecification<T> spec)
