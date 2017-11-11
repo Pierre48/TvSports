@@ -1,20 +1,14 @@
 ﻿using Microsoft.Extensions.Logging;
-using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
-using System.Net.Http;
-using System.Text;
 using TvSports.Core.Entities;
 using TvSports.Core.Interfaces;
 using TvSports.Crawler.Crawlers.NbaNet.Adapters;
-using TvSports.Crawler.Crawlers.NbaNet.JsonObjects;
 using TeamJson = TvSports.Crawler.Crawlers.NbaNet.JsonObjects.Teams.Standard;
-using ScheduleJson = TvSports.Crawler.Crawlers.NbaNet.JsonObjects.TeamsSchedule.Standard;
-using TvSports.Crawler.Crawlers.NbaNet.JsonObjects.TeamsSchedule;
-using TvSports.Crawler.Crawlers.NbaNet.JsonObjects.Teams;
 using System.Threading.Tasks;
 using TvSports.Crawler.Crawlers.NbaNet.Services;
 using TvSports.Core.Extensions;
+using TvSports.Crawler.Core;
 
 namespace TvSports.Crawler.Crawlers.NbaNet
 {
@@ -72,7 +66,7 @@ namespace TvSports.Crawler.Crawlers.NbaNet
                 schedule?.League.Standard.ForEach(gameJson =>
                 {
                     var game = GameAdapter.FromJson(gameJson, _teams,_nba);
-                    _gameService.CreateOrUpdate<Core.Entities.Game>(game, g =>
+                    _gameService.CreateOrUpdate<Game>(game, g =>
                          g.ParticipantAwayForeignKey == game.ParticipantAwayForeignKey &&
                          g.ParticipantHomeForeignKey == game.ParticipantHomeForeignKey &&
                          g.StartDate.Date == game.StartDate.Date);
@@ -88,7 +82,7 @@ namespace TvSports.Crawler.Crawlers.NbaNet
                 scoreBoard?.Games.ForEach(gameJson =>
                 {
                     var game = GameAdapter.FromJson(gameJson, _teams);
-                    _gameService.CreateOrUpdate<Core.Entities.Game>(game, g =>
+                    _gameService.CreateOrUpdate<Game>(game, g =>
                          g.ParticipantAwayForeignKey == game.ParticipantAwayForeignKey &&
                          g.ParticipantHomeForeignKey == game.ParticipantHomeForeignKey &&
                          g.StartDate.Date == game.StartDate.Date);

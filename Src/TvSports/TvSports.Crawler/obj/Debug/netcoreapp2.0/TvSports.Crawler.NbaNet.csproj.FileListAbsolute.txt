@@ -1,0 +1,17 @@
+C:\Users\pierr\source\repos\TvSports\Src\TvSports\TvSports.Crawler\obj\Debug\netcoreapp2.0\TvSports.Crawler.NbaNet.csprojResolveAssemblyReference.cache
+C:\Users\pierr\source\repos\TvSports\Src\TvSports\TvSports.Crawler\obj\Debug\netcoreapp2.0\TvSports.Crawler.NbaNet.csproj.CoreCompileInputs.cache
+C:\Users\pierr\source\repos\TvSports\Src\TvSports\TvSports.Crawler\obj\Debug\netcoreapp2.0\TvSports.Crawler.NbaNet.AssemblyInfoInputs.cache
+C:\Users\pierr\source\repos\TvSports\Src\TvSports\TvSports.Crawler\obj\Debug\netcoreapp2.0\TvSports.Crawler.NbaNet.AssemblyInfo.cs
+C:\Users\pierr\source\repos\TvSports\Src\TvSports\TvSports.Crawler\bin\Debug\netcoreapp2.0\TvSports.Crawler.NbaNet.deps.json
+C:\Users\pierr\source\repos\TvSports\Src\TvSports\TvSports.Crawler\bin\Debug\netcoreapp2.0\TvSports.Crawler.NbaNet.runtimeconfig.json
+C:\Users\pierr\source\repos\TvSports\Src\TvSports\TvSports.Crawler\bin\Debug\netcoreapp2.0\TvSports.Crawler.NbaNet.runtimeconfig.dev.json
+C:\Users\pierr\source\repos\TvSports\Src\TvSports\TvSports.Crawler\bin\Debug\netcoreapp2.0\TvSports.Crawler.NbaNet.dll
+C:\Users\pierr\source\repos\TvSports\Src\TvSports\TvSports.Crawler\bin\Debug\netcoreapp2.0\TvSports.Crawler.NbaNet.pdb
+C:\Users\pierr\source\repos\TvSports\Src\TvSports\TvSports.Crawler\bin\Debug\netcoreapp2.0\TvSports.Core.dll
+C:\Users\pierr\source\repos\TvSports\Src\TvSports\TvSports.Crawler\bin\Debug\netcoreapp2.0\TvSports.Crawler.Core.dll
+C:\Users\pierr\source\repos\TvSports\Src\TvSports\TvSports.Crawler\bin\Debug\netcoreapp2.0\TvSports.Infrastructure.dll
+C:\Users\pierr\source\repos\TvSports\Src\TvSports\TvSports.Crawler\bin\Debug\netcoreapp2.0\TvSports.Core.pdb
+C:\Users\pierr\source\repos\TvSports\Src\TvSports\TvSports.Crawler\bin\Debug\netcoreapp2.0\TvSports.Crawler.Core.pdb
+C:\Users\pierr\source\repos\TvSports\Src\TvSports\TvSports.Crawler\bin\Debug\netcoreapp2.0\TvSports.Infrastructure.pdb
+C:\Users\pierr\source\repos\TvSports\Src\TvSports\TvSports.Crawler\obj\Debug\netcoreapp2.0\TvSports.Crawler.NbaNet.dll
+C:\Users\pierr\source\repos\TvSports\Src\TvSports\TvSports.Crawler\obj\Debug\netcoreapp2.0\TvSports.Crawler.NbaNet.pdb

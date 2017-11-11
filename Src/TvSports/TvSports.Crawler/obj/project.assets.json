@@ -1361,6 +1361,19 @@
           "bin/placeholder/TvSports.Core.dll": {}
         }
       },
+      "TvSports.Crawler.Core/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v2.0",
+        "dependencies": {
+          "TvSports.Core": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/TvSports.Crawler.Core.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/TvSports.Crawler.Core.dll": {}
+        }
+      },
       "TvSports.Infrastructure/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v2.0",
@@ -5046,6 +5059,11 @@
       "path": "../TvSports.Core/TvSports.Core.csproj",
       "msbuildProject": "../TvSports.Core/TvSports.Core.csproj"
     },
+    "TvSports.Crawler.Core/1.0.0": {
+      "type": "project",
+      "path": "../TvSports.Crawler.Core/TvSports.Crawler.Core.csproj",
+      "msbuildProject": "../TvSports.Crawler.Core/TvSports.Crawler.Core.csproj"
+    },
     "TvSports.Infrastructure/1.0.0": {
       "type": "project",
       "path": "../TvSports.Infrastructure/TvSports.Infrastructure.csproj",
@@ -5060,6 +5078,7 @@
       "Microsoft.NETCore.App >= 2.0.0",
       "StructureMap.Microsoft.DependencyInjection >= 1.4.0",
       "TvSports.Core >= 1.0.0",
+      "TvSports.Crawler.Core >= 1.0.0",
       "TvSports.Infrastructure >= 1.0.0"
     ]
   },
@@ -5073,9 +5092,9 @@
       "hideWarningsAndErrors": true
     },
     "restore": {
-      "projectUniqueName": "C:\\Users\\pierr\\source\\repos\\TvSports\\Src\\TvSports\\TvSports.Crawler\\TvSports.Crawler.csproj",
-      "projectName": "TvSports.Crawler",
-      "projectPath": "C:\\Users\\pierr\\source\\repos\\TvSports\\Src\\TvSports\\TvSports.Crawler\\TvSports.Crawler.csproj",
+      "projectUniqueName": "C:\\Users\\pierr\\source\\repos\\TvSports\\Src\\TvSports\\TvSports.Crawler\\TvSports.Crawler.NbaNet.csproj",
+      "projectName": "TvSports.Crawler.NbaNet",
+      "projectPath": "C:\\Users\\pierr\\source\\repos\\TvSports\\Src\\TvSports\\TvSports.Crawler\\TvSports.Crawler.NbaNet.csproj",
       "packagesPath": "C:\\Users\\pierr\\.nuget\\packages\\",
       "outputPath": "C:\\Users\\pierr\\source\\repos\\TvSports\\Src\\TvSports\\TvSports.Crawler\\obj\\",
       "projectStyle": "PackageReference",
@@ -5096,6 +5115,9 @@
       "frameworks": {
         "netcoreapp2.0": {
           "projectReferences": {
+            "C:\\Users\\pierr\\source\\repos\\TvSports\\Src\\TvSports\\TvSports.Crawler.Core\\TvSports.Crawler.Core.csproj": {
+              "projectPath": "C:\\Users\\pierr\\source\\repos\\TvSports\\Src\\TvSports\\TvSports.Crawler.Core\\TvSports.Crawler.Core.csproj"
+            },
             "C:\\Users\\pierr\\source\\repos\\TvSports\\Src\\TvSports\\TvSports.Core\\TvSports.Core.csproj": {
               "projectPath": "C:\\Users\\pierr\\source\\repos\\TvSports\\Src\\TvSports\\TvSports.Core\\TvSports.Core.csproj"
             },

@@ -19,7 +19,7 @@ namespace TvSports.Crawler.Crawlers.NbaNet.Adapters
         {
             EnsureArg.IsNotNull(gameJson);
             EnsureArg.IsNotNull(teams);
-            var game = new Core.Entities.Game();
+            var game = new TvSports.Core.Entities.Game();
             game.ParticipantHomeForeignKey= teams.First(t=>t.Value.TeamId==gameJson.HTeam.TeamId).Key;
             game.ParticipantAwayForeignKey = teams.First(t => t.Value.TeamId == gameJson.VTeam.TeamId).Key;
             game.StartDate = DateTime.ParseExact(gameJson.StartTimeUTC, "yyyy-MM-ddTHH:mm:ss.fffZ", CultureInfo.InvariantCulture);
@@ -31,7 +31,7 @@ namespace TvSports.Crawler.Crawlers.NbaNet.Adapters
         {
             EnsureArg.IsNotNull(gameJson);
             EnsureArg.IsNotNull(teams);
-            var game = new Core.Entities.Game();
+            var game = new TvSports.Core.Entities.Game();
             game.ParticipantHomeForeignKey = teams.First(t => t.Value.TeamId == gameJson.HTeam.TeamId).Key;
             game.ParticipantAwayForeignKey = teams.First(t => t.Value.TeamId == gameJson.VTeam.TeamId).Key;
             game.StartDate = DateTime.ParseExact(gameJson.StartTimeUTC, "yyyy-MM-ddTHH:mm:ss.fffZ", CultureInfo.InvariantCulture);

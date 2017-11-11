@@ -1,0 +1,13 @@
+C:\Users\pierr\source\repos\TvSports\Src\TvSports\TvSports.Crawler.Core\bin\Debug\netcoreapp2.0\TvSports.Crawler.Core.deps.json
+C:\Users\pierr\source\repos\TvSports\Src\TvSports\TvSports.Crawler.Core\bin\Debug\netcoreapp2.0\TvSports.Crawler.Core.dll
+C:\Users\pierr\source\repos\TvSports\Src\TvSports\TvSports.Crawler.Core\bin\Debug\netcoreapp2.0\TvSports.Crawler.Core.pdb
+C:\Users\pierr\source\repos\TvSports\Src\TvSports\TvSports.Crawler.Core\bin\Debug\netcoreapp2.0\Microsoft.Extensions.Logging.Abstractions.dll
+C:\Users\pierr\source\repos\TvSports\Src\TvSports\TvSports.Crawler.Core\bin\Debug\netcoreapp2.0\TvSports.Core.dll
+C:\Users\pierr\source\repos\TvSports\Src\TvSports\TvSports.Crawler.Core\bin\Debug\netcoreapp2.0\TvSports.Core.pdb
+C:\Users\pierr\source\repos\TvSports\Src\TvSports\TvSports.Crawler.Core\bin\Debug\netcoreapp2.0\Microsoft.Extensions.Logging.Abstractions.xml
+C:\Users\pierr\source\repos\TvSports\Src\TvSports\TvSports.Crawler.Core\obj\Debug\netcoreapp2.0\TvSports.Crawler.Core.csprojResolveAssemblyReference.cache
+C:\Users\pierr\source\repos\TvSports\Src\TvSports\TvSports.Crawler.Core\obj\Debug\netcoreapp2.0\TvSports.Crawler.Core.csproj.CoreCompileInputs.cache
+C:\Users\pierr\source\repos\TvSports\Src\TvSports\TvSports.Crawler.Core\obj\Debug\netcoreapp2.0\TvSports.Crawler.Core.AssemblyInfoInputs.cache
+C:\Users\pierr\source\repos\TvSports\Src\TvSports\TvSports.Crawler.Core\obj\Debug\netcoreapp2.0\TvSports.Crawler.Core.AssemblyInfo.cs
+C:\Users\pierr\source\repos\TvSports\Src\TvSports\TvSports.Crawler.Core\obj\Debug\netcoreapp2.0\TvSports.Crawler.Core.dll
+C:\Users\pierr\source\repos\TvSports\Src\TvSports\TvSports.Crawler.Core\obj\Debug\netcoreapp2.0\TvSports.Crawler.Core.pdb

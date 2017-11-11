@@ -1,0 +1,17 @@
+C:\Users\pierr\source\repos\TvSports\Src\TvSports\TvSports.Crawler.BeinSport\obj\Debug\netcoreapp2.0\TvSports.Crawler.BeinSport.csprojResolveAssemblyReference.cache
+C:\Users\pierr\source\repos\TvSports\Src\TvSports\TvSports.Crawler.BeinSport\obj\Debug\netcoreapp2.0\TvSports.Crawler.BeinSport.csproj.CoreCompileInputs.cache
+C:\Users\pierr\source\repos\TvSports\Src\TvSports\TvSports.Crawler.BeinSport\obj\Debug\netcoreapp2.0\TvSports.Crawler.BeinSport.AssemblyInfoInputs.cache
+C:\Users\pierr\source\repos\TvSports\Src\TvSports\TvSports.Crawler.BeinSport\obj\Debug\netcoreapp2.0\TvSports.Crawler.BeinSport.AssemblyInfo.cs
+C:\Users\pierr\source\repos\TvSports\Src\TvSports\TvSports.Crawler.BeinSport\bin\Debug\netcoreapp2.0\TvSports.Crawler.BeinSport.deps.json
+C:\Users\pierr\source\repos\TvSports\Src\TvSports\TvSports.Crawler.BeinSport\bin\Debug\netcoreapp2.0\TvSports.Crawler.BeinSport.runtimeconfig.json
+C:\Users\pierr\source\repos\TvSports\Src\TvSports\TvSports.Crawler.BeinSport\bin\Debug\netcoreapp2.0\TvSports.Crawler.BeinSport.runtimeconfig.dev.json
+C:\Users\pierr\source\repos\TvSports\Src\TvSports\TvSports.Crawler.BeinSport\bin\Debug\netcoreapp2.0\TvSports.Crawler.BeinSport.dll
+C:\Users\pierr\source\repos\TvSports\Src\TvSports\TvSports.Crawler.BeinSport\bin\Debug\netcoreapp2.0\TvSports.Crawler.BeinSport.pdb
+C:\Users\pierr\source\repos\TvSports\Src\TvSports\TvSports.Crawler.BeinSport\bin\Debug\netcoreapp2.0\Microsoft.Extensions.Logging.Abstractions.dll
+C:\Users\pierr\source\repos\TvSports\Src\TvSports\TvSports.Crawler.BeinSport\bin\Debug\netcoreapp2.0\TvSports.Core.dll
+C:\Users\pierr\source\repos\TvSports\Src\TvSports\TvSports.Crawler.BeinSport\bin\Debug\netcoreapp2.0\TvSports.Crawler.Core.dll
+C:\Users\pierr\source\repos\TvSports\Src\TvSports\TvSports.Crawler.BeinSport\bin\Debug\netcoreapp2.0\TvSports.Crawler.Core.pdb
+C:\Users\pierr\source\repos\TvSports\Src\TvSports\TvSports.Crawler.BeinSport\bin\Debug\netcoreapp2.0\TvSports.Core.pdb
+C:\Users\pierr\source\repos\TvSports\Src\TvSports\TvSports.Crawler.BeinSport\bin\Debug\netcoreapp2.0\Microsoft.Extensions.Logging.Abstractions.xml
+C:\Users\pierr\source\repos\TvSports\Src\TvSports\TvSports.Crawler.BeinSport\obj\Debug\netcoreapp2.0\TvSports.Crawler.BeinSport.dll
+C:\Users\pierr\source\repos\TvSports\Src\TvSports\TvSports.Crawler.BeinSport\obj\Debug\netcoreapp2.0\TvSports.Crawler.BeinSport.pdb
