@@ -21,8 +21,6 @@ namespace TvSports.Crawler.Crawlers.NbaNet
         private readonly ICompetitionInstanceService _competitionInstanceService;
         private readonly ICompetitionInstanceParticipantService _competitionInstanceParticipantService;
         private readonly IGameService _gameService;
-        private string _season = "";
-        private CompetitionInstance _nba;
 
         public BeinSportCrawler(
             ILoggerFactory loggerFactory,

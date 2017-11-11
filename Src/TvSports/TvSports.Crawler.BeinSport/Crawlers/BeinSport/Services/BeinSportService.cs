@@ -1,19 +1,17 @@
-﻿//using Newtonsoft.Json;
-//using System;
-//using System.Collections.Generic;
-//using System.Net.Http;
-//using System.Text;
-//using System.Threading.Tasks;
-//using TvSports.Crawler.Crawlers.NbaNet.JsonObjects;
-//using TvSports.Crawler.Crawlers.NbaNet.JsonObjects.Teams;
-//using TvSports.Crawler.Crawlers.NbaNet.JsonObjects.TeamsSchedule;
-//using TvSports.Crawler.Crawlers.NbaNet.JsonObjects.Today;
+﻿using System;
+using System.Collections.Generic;
+using System.Net.Http;
+using System.Text;
+using System.Threading.Tasks;
 
-//namespace TvSports.Crawler.Crawlers.NbaNet.Services
-//{
-//    internal class NbaNetService : IBeinSportService
-//    {
-//        private const string BaseUrl = "http://data.nba.net/prod/v1/";
+namespace TvSports.Crawler.Crawlers.NbaNet.Services
+{
+    internal class BeinSportService : IBeinSportService
+    {
+        /// <summary>
+        /// http://epg.beinsports.com/utctime.php?cdate=2017-11-15&offset=+1&mins=00&category=sports
+        /// </summary>
+        private const string BaseUrl = "http://epg.beinsports.com/utctime.php?cdate={0}&offset=+1&mins=00&category=sports";
 
 //        public async Task<Today> GetCurrentSeason()
 //        => await Get<Today>($"{BaseUrl}today.json");
@@ -37,5 +35,5 @@
 //                return JsonConvert.DeserializeObject<T>(jsonResponse);
 //            }
 //        }
-//    }
-//}
+    }
+}
