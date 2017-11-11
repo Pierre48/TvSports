@@ -18,4 +18,12 @@ namespace TvSports.Core.Interfaces
         void Update(T entity);
         void Delete(T entity);
     }
+
+    public interface ICommonRepository<T>
+    {
+        T GetSingleByFilter(Func<T,bool> filter, params string[] include);
+        void Update(T entity);
+        void Delete(T entity);
+        T Add(T entity);
+    }
 }

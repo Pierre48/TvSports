@@ -1,6 +1,7 @@
 ﻿using EnsureThat;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Text;
@@ -34,5 +35,6 @@ namespace TvSports.Core.Entities
         [Required]
         [ForeignKey("SportForeignKey")]
         public Sport Sport { get; set; }
+        public Collection<CompetitionInstance> CompetitionInstances { get; set; }
     }
 }

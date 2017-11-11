@@ -5,8 +5,7 @@ using TvSports.Core.Entities;
 
 namespace TvSports.Core.Interfaces
 {
-    public interface ICompetitionService
+    public interface ICompetitionService : IService<Competition>
     {
-        Competition CreateAndGet(string competitionName, string sportName, string zone1, string zone2);
     }
 }

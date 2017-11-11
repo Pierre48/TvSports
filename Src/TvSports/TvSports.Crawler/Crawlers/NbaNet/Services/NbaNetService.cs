@@ -22,7 +22,7 @@ namespace TvSports.Crawler.Crawlers.NbaNet.Services
             => await Get<Teams>($"{BaseUrl}{season}/teams.json");
 
         public async Task<TeamSchedule> GetTeamSchedule(string season, string team)
-            => await Get<TeamSchedule>($"{BaseUrl}{season}/{team}/schedule.json");
+            => await Get<TeamSchedule>($"{BaseUrl}{season}/teams/{team}/schedule.json");
 
         public async Task<ScoreBoard> GetScoreboard(string season, DateTime date)
             => await Get<ScoreBoard>($"{BaseUrl}{date.ToString("yyyyMMdd")}/scoreboard.json");

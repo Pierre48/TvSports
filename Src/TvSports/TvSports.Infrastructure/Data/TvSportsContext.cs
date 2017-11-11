@@ -38,28 +38,29 @@ namespace TvSports.Infrastructure.Data
 
         protected override void OnModelCreating(ModelBuilder builder)
         {
-            builder.Entity<Zone>(ConfigureZone);
-            builder.Entity<Competition>(ConfigureCompetition);
-            builder.Entity<Game>(ConfigureGame);
-            builder.Entity<Channel>(ConfigureChannel);
-            builder.Entity<ParticipantBase>(ConfigureParticipantBase);
-            builder.Entity<Player>(ConfigurePlayer);
-            builder.Entity<Team>(ConfigureTeam);
-            builder.Entity<Sport>(ConfigureSport);
+            builder.Entity<Zone>(Configure);
+            builder.Entity<Competition>(Configure);
+            builder.Entity<Game>(Configure);
+            builder.Entity<Channel>(Configure);
+            builder.Entity<CompetitionInstanceParticipant>(Configure);
+            builder.Entity<ParticipantBase>(Configure);
+            builder.Entity<Player>(Configure);
+            builder.Entity<Team>(Configure);
+            builder.Entity<Sport>(Configure);
             base.OnModelCreating(builder);
         }
 
-        private void ConfigureTeam(EntityTypeBuilder<Team> builder)
+        private void Configure(EntityTypeBuilder<Team> builder)
         {
             builder.ToTable("Team");
         }
 
-        private void ConfigurePlayer(EntityTypeBuilder<Player> builder)
+        private void Configure(EntityTypeBuilder<Player> builder)
         {
             builder.ToTable("Player");
         }
 
-        private void ConfigureSport(EntityTypeBuilder<Sport> builder)
+        private void Configure(EntityTypeBuilder<Sport> builder)
         {
             builder.ToTable("Sport");
             builder.Property(ci => ci.Id)
@@ -69,7 +70,7 @@ namespace TvSports.Infrastructure.Data
                  .IsUnique();
         }
 
-        private void ConfigureParticipantBase(EntityTypeBuilder<ParticipantBase> builder)
+        private void Configure(EntityTypeBuilder<ParticipantBase> builder)
         {
             builder.ToTable("Participant");
             builder.Property(ci => ci.Id)
@@ -83,7 +84,7 @@ namespace TvSports.Infrastructure.Data
         //var navigation = builder.Metadata.FindNavigation(nameof(Chanel.ChanelNames));
         //navigation.SetPropertyAccessMode(PropertyAccessMode.Field);
 
-        private void ConfigureGame(EntityTypeBuilder<Game> builder)
+        private void Configure(EntityTypeBuilder<Game> builder)
         {
             builder.ToTable("Game");
             builder.Property(ci => ci.Id)
@@ -91,7 +92,7 @@ namespace TvSports.Infrastructure.Data
                 .IsRequired();
         }
 
-        private void ConfigureCompetition(EntityTypeBuilder<Competition> builder)
+        private void Configure(EntityTypeBuilder<Competition> builder)
         {
             builder.ToTable("Competition");
             builder.Property(ci => ci.Id)
@@ -99,7 +100,7 @@ namespace TvSports.Infrastructure.Data
                 .IsRequired();
         }
 
-        private void ConfigureZone(EntityTypeBuilder<Zone> builder)
+        private void Configure(EntityTypeBuilder<Zone> builder)
         {
             builder.ToTable("Zone");
             builder.Property(ci => ci.Id)
@@ -108,8 +109,27 @@ namespace TvSports.Infrastructure.Data
             builder.HasIndex(u => u.Name)
                  .IsUnique();
         }
+        private void Configure(EntityTypeBuilder<CompetitionInstanceParticipant> builder)
+        {
+            builder.ToTable("CompetitionInstanceParticipant");
 
-        private void ConfigureChannel(EntityTypeBuilder<Channel> builder)
+            builder
+                .HasKey(bc => new { bc.CompetitionInstanceId, bc.ParticipantId });
+
+
+            builder
+                .HasOne(cp => cp.CompetitionInstance)
+                .WithMany(c => c.CompetitionInstanceParticipants)
+                .HasForeignKey(cp => cp.CompetitionInstanceId);
+
+
+            builder
+                .HasOne(cp => cp.Participant)
+                .WithMany(p => p.CompetitionInstanceParticipants)
+                .HasForeignKey(cp => cp.ParticipantId);
+        }
+
+        private void Configure(EntityTypeBuilder<Channel> builder)
         {
             builder.ToTable("Channel");
             builder.Property(ci => ci.Id)

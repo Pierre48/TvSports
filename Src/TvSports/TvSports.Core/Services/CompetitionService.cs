@@ -21,14 +21,6 @@ namespace TvSports.Core.Services
             _sportService = sportService;
         }
 
-        public Competition CreateAndGet(string competitionName, string sportName, string zone1, string zone2)
-        {
-            var zoneEntity = _zoneService.CreateOrUpdate<Zone>(new Zone(zone2, new Zone(zone1)), t=>t.Name == zone2);
-            var sportEntity = _sportService.CreateOrUpdate<Zone>(new Sport(sportName), t=>t.Name == sportName);
-
-            return CreateOrUpdate<Competition>(new Competition("NBA", sportEntity.Id,zoneEntity.Id),t=>t.Name=="NBA");
-        }
-
         protected override void Map(Competition entity, Competition entityDb)
         {
             entityDb.Name = entity.Name;

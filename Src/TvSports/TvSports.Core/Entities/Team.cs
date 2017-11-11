@@ -23,8 +23,6 @@ namespace TvSports.Core.Entities
         public string Nickname { get; set; }
         [StringLength(50)]
         public string City { get; set; }
-        public Collection<AdditionalTeamInformation> AddionalTeamInformations { get; set; }
-        public Competition Competition { get; set; }
-        public int CompetitionId { get; set; }
+        public Collection<AdditionalTeamInformation> AddionalTeamInformations { get; set; } = new Collection<AdditionalTeamInformation>();
     }
 }

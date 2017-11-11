@@ -39,12 +39,15 @@ namespace TvSports.Crawler
         {
             var services = new ServiceCollection()
                 .AddSingleton(GetConfiguration())
+                .AddScoped(typeof(ICommonRepository<>), typeof(CommonRepository<>))
                 .AddScoped(typeof(IRepository<>), typeof(EfRepository<>))
                 .AddScoped(typeof(IAsyncRepository<>), typeof(EfRepository<>))
                 .AddScoped<ITeamService, TeamService>()
                 .AddScoped<ICompetitionService, CompetitionService>()
                 .AddScoped<ISportService, SportService>()
                 .AddScoped<IZoneService, ZoneService>()
+                .AddScoped<ICompetitionInstanceService, CompetitionInstanceService>()
+                .AddScoped<ICompetitionInstanceParticipantService, CompetitionInstanceParticipantService>()
                 .AddScoped<INbaNetService, NbaNetService > ()
                 .AddScoped<IGameService, GameService>();
             services.AddLogging(builder => builder.SetMinimumLevel(LogLevel.Trace));

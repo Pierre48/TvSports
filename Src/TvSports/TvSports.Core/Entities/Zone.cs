@@ -23,6 +23,5 @@ namespace TvSports.Core.Entities
         [ForeignKey("ZoneParentForeignKey")]
         public Zone Parent { get; set; }
         public Collection<Competition> Competitions { get; set; }
-        public Collection<Zone> ChildrenZone { get; set; }
     }
 }

@@ -46,6 +46,24 @@ namespace TvSports.Infrastructure.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "Participant",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int4", nullable: false),
+                    Discriminator = table.Column<string>(type: "text", nullable: false),
+                    Name = table.Column<string>(type: "varchar(50)", maxLength: 50, nullable: false),
+                    FirstName = table.Column<string>(type: "varchar(50)", maxLength: 50, nullable: true),
+                    LastName = table.Column<string>(type: "varchar(50)", maxLength: 50, nullable: true),
+                    City = table.Column<string>(type: "varchar(50)", maxLength: 50, nullable: true),
+                    Nickname = table.Column<string>(type: "varchar(50)", maxLength: 50, nullable: true),
+                    Tricode = table.Column<string>(type: "varchar(3)", maxLength: 3, nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Participant", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "Sport",
                 columns: table => new
                 {
@@ -78,57 +96,6 @@ namespace TvSports.Infrastructure.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Competition",
-                columns: table => new
-                {
-                    Id = table.Column<int>(type: "int4", nullable: false),
-                    Name = table.Column<string>(type: "varchar(50)", maxLength: 50, nullable: false),
-                    SportForeignKey = table.Column<int>(type: "int4", nullable: false),
-                    ZoneForeignKey = table.Column<int>(type: "int4", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Competition", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_Competition_Sport_SportForeignKey",
-                        column: x => x.SportForeignKey,
-                        principalTable: "Sport",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
-                    table.ForeignKey(
-                        name: "FK_Competition_Zone_ZoneForeignKey",
-                        column: x => x.ZoneForeignKey,
-                        principalTable: "Zone",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "Participant",
-                columns: table => new
-                {
-                    Id = table.Column<int>(type: "int4", nullable: false),
-                    Discriminator = table.Column<string>(type: "text", nullable: false),
-                    Name = table.Column<string>(type: "varchar(50)", maxLength: 50, nullable: false),
-                    FirstName = table.Column<string>(type: "varchar(50)", maxLength: 50, nullable: true),
-                    LastName = table.Column<string>(type: "varchar(50)", maxLength: 50, nullable: true),
-                    City = table.Column<string>(type: "varchar(50)", maxLength: 50, nullable: true),
-                    CompetitionId = table.Column<int>(type: "int4", nullable: true),
-                    Nickname = table.Column<string>(type: "varchar(50)", maxLength: 50, nullable: true),
-                    Tricode = table.Column<string>(type: "varchar(3)", maxLength: 3, nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Participant", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_Participant_Competition_CompetitionId",
-                        column: x => x.CompetitionId,
-                        principalTable: "Competition",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
-                });
-
-            migrationBuilder.CreateTable(
                 name: "AdditionalTeamInformation",
                 columns: table => new
                 {
@@ -156,9 +123,7 @@ namespace TvSports.Infrastructure.Migrations
                     Id = table.Column<int>(type: "int4", nullable: false),
                     EndDate = table.Column<DateTime>(type: "timestamp", nullable: false),
                     ParticipantAwayForeignKey = table.Column<int>(type: "int4", nullable: false),
-                    ParticipantAwayId = table.Column<int>(type: "int4", nullable: false),
                     ParticipantHomeForeignKey = table.Column<int>(type: "int4", nullable: false),
-                    ParticipantHomeId = table.Column<int>(type: "int4", nullable: false),
                     PointsAway = table.Column<int>(type: "int4", nullable: true),
                     PointsHome = table.Column<int>(type: "int4", nullable: true),
                     StartDate = table.Column<DateTime>(type: "timestamp", nullable: false)
@@ -167,14 +132,86 @@ namespace TvSports.Infrastructure.Migrations
                 {
                     table.PrimaryKey("PK_Game", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Game_Participant_ParticipantAwayId",
-                        column: x => x.ParticipantAwayId,
+                        name: "FK_Game_Participant_ParticipantAwayForeignKey",
+                        column: x => x.ParticipantAwayForeignKey,
                         principalTable: "Participant",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_Game_Participant_ParticipantHomeId",
-                        column: x => x.ParticipantHomeId,
+                        name: "FK_Game_Participant_ParticipantHomeForeignKey",
+                        column: x => x.ParticipantHomeForeignKey,
+                        principalTable: "Participant",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Competition",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int4", nullable: false),
+                    Name = table.Column<string>(type: "varchar(50)", maxLength: 50, nullable: false),
+                    SportForeignKey = table.Column<int>(type: "int4", nullable: false),
+                    ZoneForeignKey = table.Column<int>(type: "int4", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Competition", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_Competition_Sport_SportForeignKey",
+                        column: x => x.SportForeignKey,
+                        principalTable: "Sport",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_Competition_Zone_ZoneForeignKey",
+                        column: x => x.ZoneForeignKey,
+                        principalTable: "Zone",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "CompetitionInstance",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int4", nullable: false)
+                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.SerialColumn),
+                    CompetitionForeignKey = table.Column<int>(type: "int4", nullable: false),
+                    EndDate = table.Column<DateTime>(type: "timestamp", nullable: false),
+                    Name = table.Column<string>(type: "text", nullable: true),
+                    StartDate = table.Column<DateTime>(type: "timestamp", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_CompetitionInstance", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_CompetitionInstance_Competition_CompetitionForeignKey",
+                        column: x => x.CompetitionForeignKey,
+                        principalTable: "Competition",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "CompetitionInstanceParticipant",
+                columns: table => new
+                {
+                    CompetitionInstanceId = table.Column<int>(type: "int4", nullable: false),
+                    ParticipantId = table.Column<int>(type: "int4", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_CompetitionInstanceParticipant", x => new { x.CompetitionInstanceId, x.ParticipantId });
+                    table.ForeignKey(
+                        name: "FK_CompetitionInstanceParticipant_CompetitionInstance_CompetitionInstanceId",
+                        column: x => x.CompetitionInstanceId,
+                        principalTable: "CompetitionInstance",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_CompetitionInstanceParticipant_Participant_ParticipantId",
+                        column: x => x.ParticipantId,
                         principalTable: "Participant",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
@@ -202,25 +239,30 @@ namespace TvSports.Infrastructure.Migrations
                 column: "ZoneForeignKey");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Game_ParticipantAwayId",
-                table: "Game",
-                column: "ParticipantAwayId");
+                name: "IX_CompetitionInstance_CompetitionForeignKey",
+                table: "CompetitionInstance",
+                column: "CompetitionForeignKey");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Game_ParticipantHomeId",
+                name: "IX_CompetitionInstanceParticipant_ParticipantId",
+                table: "CompetitionInstanceParticipant",
+                column: "ParticipantId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Game_ParticipantAwayForeignKey",
                 table: "Game",
-                column: "ParticipantHomeId");
+                column: "ParticipantAwayForeignKey");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Game_ParticipantHomeForeignKey",
+                table: "Game",
+                column: "ParticipantHomeForeignKey");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Participant_Name",
                 table: "Participant",
                 column: "Name",
                 unique: true);
-
-            migrationBuilder.CreateIndex(
-                name: "IX_Participant_CompetitionId",
-                table: "Participant",
-                column: "CompetitionId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Sport_Name",
@@ -249,7 +291,13 @@ namespace TvSports.Infrastructure.Migrations
                 name: "Channel");
 
             migrationBuilder.DropTable(
+                name: "CompetitionInstanceParticipant");
+
+            migrationBuilder.DropTable(
                 name: "Game");
+
+            migrationBuilder.DropTable(
+                name: "CompetitionInstance");
 
             migrationBuilder.DropTable(
                 name: "Participant");

@@ -24,34 +24,41 @@ namespace TvSports.Crawler.Crawlers.NbaNet
         private readonly ITeamService _teamService;
         private readonly INbaNetService _nbaNetService;
         private readonly ICompetitionService _competitionService;
+        private readonly ICompetitionInstanceService _competitionInstanceService;
+        private readonly ICompetitionInstanceParticipantService _competitionInstanceParticipantService;
         private readonly IGameService _gameService;
         private readonly Dictionary<int, TeamJson> _teams = new Dictionary<int, TeamJson>();
         private string _season = "";
+        private CompetitionInstance _nba;
 
         public NbaNetCrawler(
             ILoggerFactory loggerFactory,
             INbaNetService nbaNetService,
             ITeamService teamService,
             ICompetitionService competitionService,
+            ICompetitionInstanceService competitionInstanceService,
+            ICompetitionInstanceParticipantService competitionInstanceParticipantService,
             IGameService gameService
             ) : base(loggerFactory.CreateLogger<NbaNetCrawler>())
         {
             _teamService = teamService;
             _nbaNetService = nbaNetService;
             _competitionService = competitionService;
+            _competitionInstanceService = competitionInstanceService;
+            _competitionInstanceParticipantService = competitionInstanceParticipantService;
             _gameService = gameService;
         }
 
         private async Task LoadTeamsAsync()
         {
             _logger.LogInformation("Loading teams ...");
-            var nba = _competitionService.CreateAndGet("NBA", "Basket", "Amerique du nord", "USA");
             var teams = await _nbaNetService.GetTeams(_season);
             teams?.League.Standard.ForEach(teamJson =>
             {
                 var team = TeamAdapter.FromJson(teamJson);
-                team.CompetitionId = nba.Id;
                 _teamService.CreateOrUpdate<Team>(team, t => t.Name == team.Name);
+                var competitionInstanceParticipant = new CompetitionInstanceParticipant(_nba.Id, team.Id);
+                _competitionInstanceParticipantService.CreateOrUpdate(competitionInstanceParticipant);
                 _teams[team.Id] = teamJson;
             });
         }
@@ -103,6 +110,13 @@ namespace TvSports.Crawler.Crawlers.NbaNet
             _logger.LogInformation("Initizing ...");
             var today = await _nbaNetService.GetCurrentSeason();
             _season = today.SeasonScheduleYear.ToString();
+            _nba = _competitionInstanceService.CreateAndGet(
+                "NBA", 
+                new DateTime((int)today.SeasonScheduleYear,1,1),
+                new DateTime((int)today.SeasonScheduleYear,1,1),
+                "Basket", 
+                "Amerique du nord", 
+                "USA");
         }
 
         protected override void Stopping()

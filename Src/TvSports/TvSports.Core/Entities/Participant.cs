@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Text;
 
 namespace TvSports.Core.Entities
@@ -11,5 +13,6 @@ namespace TvSports.Core.Entities
         [StringLength(50)]
         [Display(Name = "Name")]
         public string Name { get; set; }
+        public Collection<CompetitionInstanceParticipant> CompetitionInstanceParticipants { get; set; }
     }
 }

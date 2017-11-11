@@ -87,6 +87,39 @@ namespace TvSports.Infrastructure.Migrations
                     b.ToTable("Competition");
                 });
 
+            modelBuilder.Entity("TvSports.Core.Entities.CompetitionInstance", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<int>("CompetitionForeignKey");
+
+                    b.Property<DateTime>("EndDate");
+
+                    b.Property<string>("Name");
+
+                    b.Property<DateTime>("StartDate");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("CompetitionForeignKey");
+
+                    b.ToTable("CompetitionInstance");
+                });
+
+            modelBuilder.Entity("TvSports.Core.Entities.CompetitionInstanceParticipant", b =>
+                {
+                    b.Property<int>("CompetitionInstanceId");
+
+                    b.Property<int>("ParticipantId");
+
+                    b.HasKey("CompetitionInstanceId", "ParticipantId");
+
+                    b.HasIndex("ParticipantId");
+
+                    b.ToTable("CompetitionInstanceParticipant");
+                });
+
             modelBuilder.Entity("TvSports.Core.Entities.Game", b =>
                 {
                     b.Property<int>("Id")
@@ -206,15 +239,11 @@ namespace TvSports.Infrastructure.Migrations
                     b.Property<string>("City")
                         .HasMaxLength(50);
 
-                    b.Property<int>("CompetitionId");
-
                     b.Property<string>("Nickname")
                         .HasMaxLength(50);
 
                     b.Property<string>("Tricode")
                         .HasMaxLength(3);
-
-                    b.HasIndex("CompetitionId");
 
                     b.ToTable("Team");
 
@@ -241,6 +270,27 @@ namespace TvSports.Infrastructure.Migrations
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 
+            modelBuilder.Entity("TvSports.Core.Entities.CompetitionInstance", b =>
+                {
+                    b.HasOne("TvSports.Core.Entities.Competition", "Competition")
+                        .WithMany("CompetitionInstances")
+                        .HasForeignKey("CompetitionForeignKey")
+                        .OnDelete(DeleteBehavior.Cascade);
+                });
+
+            modelBuilder.Entity("TvSports.Core.Entities.CompetitionInstanceParticipant", b =>
+                {
+                    b.HasOne("TvSports.Core.Entities.CompetitionInstance", "CompetitionInstance")
+                        .WithMany("CompetitionInstanceParticipants")
+                        .HasForeignKey("CompetitionInstanceId")
+                        .OnDelete(DeleteBehavior.Cascade);
+
+                    b.HasOne("TvSports.Core.Entities.ParticipantBase", "Participant")
+                        .WithMany("CompetitionInstanceParticipants")
+                        .HasForeignKey("ParticipantId")
+                        .OnDelete(DeleteBehavior.Cascade);
+                });
+
             modelBuilder.Entity("TvSports.Core.Entities.Game", b =>
                 {
                     b.HasOne("TvSports.Core.Entities.ParticipantBase", "ParticipantAway")
@@ -257,16 +307,8 @@ namespace TvSports.Infrastructure.Migrations
             modelBuilder.Entity("TvSports.Core.Entities.Zone", b =>
                 {
                     b.HasOne("TvSports.Core.Entities.Zone", "Parent")
-                        .WithMany("ChildrenZone")
-                        .HasForeignKey("ZoneParentForeignKey");
-                });
-
-            modelBuilder.Entity("TvSports.Core.Entities.Team", b =>
-                {
-                    b.HasOne("TvSports.Core.Entities.Competition", "Competition")
                         .WithMany()
-                        .HasForeignKey("CompetitionId")
-                        .OnDelete(DeleteBehavior.Cascade);
+                        .HasForeignKey("ZoneParentForeignKey");
                 });
 #pragma warning restore 612, 618
         }
