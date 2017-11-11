@@ -31,7 +31,7 @@ namespace TvSports.Infrastructure.Data
             {
                 set = set.Include(i);
             });
-            return set.FirstOrDefault(x=>x.Id==id);
+            return set.FirstOrDefault(x => x.Id == id);
         }
 
         public T GetSingleBySpec(ISpecification<T> spec)
@@ -156,5 +156,16 @@ namespace TvSports.Infrastructure.Data
             _dbContext.Set<T>().Remove(entity);
             await _dbContext.SaveChangesAsync();
         }
+
+        public T GetSingle(Func<T, bool> p, params string[] includes)
+        {
+            IQueryable<T> set = _dbContext.Set<T>().Where(t => p(t));
+            includes?.ForEach(i =>
+            {
+                set = set.Include(i);
+            });
+            return set.FirstOrDefault();
+        }
+
     }
 }

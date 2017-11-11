@@ -22,10 +22,28 @@ namespace TvSports.Infrastructure.Migrations
                 .HasAnnotation("ProductVersion", "2.0.0-rtm-26452")
                 .HasAnnotation("Relational:Sequence:.Channel_hilo", "'Channel_hilo', '', '1', '10', '', '', 'Int64', 'False'")
                 .HasAnnotation("Relational:Sequence:.Competition_hilo", "'Competition_hilo', '', '1', '10', '', '', 'Int64', 'False'")
-                .HasAnnotation("Relational:Sequence:.Match_hilo", "'Match_hilo', '', '1', '10', '', '', 'Int64', 'False'")
+                .HasAnnotation("Relational:Sequence:.Game_hilo", "'Game_hilo', '', '1', '10', '', '', 'Int64', 'False'")
                 .HasAnnotation("Relational:Sequence:.Participant_hilo", "'Participant_hilo', '', '1', '10', '', '', 'Int64', 'False'")
                 .HasAnnotation("Relational:Sequence:.Sport_hilo", "'Sport_hilo', '', '1', '10', '', '', 'Int64', 'False'")
                 .HasAnnotation("Relational:Sequence:.Zone_hilo", "'Zone_hilo', '', '1', '10', '', '', 'Int64', 'False'");
+
+            modelBuilder.Entity("TvSports.Core.Entities.AdditionalTeamInformation", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<string>("Key");
+
+                    b.Property<int?>("TeamId");
+
+                    b.Property<string>("Value");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("TeamId");
+
+                    b.ToTable("AdditionalTeamInformation");
+                });
 
             modelBuilder.Entity("TvSports.Core.Entities.Channel", b =>
                 {
@@ -56,35 +74,33 @@ namespace TvSports.Infrastructure.Migrations
                         .IsRequired()
                         .HasMaxLength(50);
 
-                    b.Property<int?>("SportFK")
-                        .IsRequired();
+                    b.Property<int>("SportForeignKey");
 
-                    b.Property<int?>("ZoneFK")
-                        .IsRequired();
+                    b.Property<int>("ZoneForeignKey");
 
                     b.HasKey("Id");
 
-                    b.HasIndex("SportFK");
+                    b.HasIndex("SportForeignKey");
 
-                    b.HasIndex("ZoneFK");
+                    b.HasIndex("ZoneForeignKey");
 
                     b.ToTable("Competition");
                 });
 
-            modelBuilder.Entity("TvSports.Core.Entities.Match", b =>
+            modelBuilder.Entity("TvSports.Core.Entities.Game", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasAnnotation("Npgsql:HiLoSequenceName", "Match_hilo")
+                        .HasAnnotation("Npgsql:HiLoSequenceName", "Game_hilo")
                         .HasAnnotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.SequenceHiLo);
 
                     b.Property<DateTime>("EndDate");
 
-                    b.Property<int>("ParticipantAwayId");
+                    b.Property<int>("ParticipantAwayForeignKey");
 
-                    b.Property<int>("ParticipantHomeId");
+                    b.Property<int>("ParticipantHomeForeignKey");
 
-                    b.Property<int?>("PointsAxay");
+                    b.Property<int?>("PointsAway");
 
                     b.Property<int?>("PointsHome");
 
@@ -92,11 +108,11 @@ namespace TvSports.Infrastructure.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("ParticipantAwayId");
+                    b.HasIndex("ParticipantAwayForeignKey");
 
-                    b.HasIndex("ParticipantHomeId");
+                    b.HasIndex("ParticipantHomeForeignKey");
 
-                    b.ToTable("Match");
+                    b.ToTable("Game");
                 });
 
             modelBuilder.Entity("TvSports.Core.Entities.ParticipantBase", b =>
@@ -152,14 +168,16 @@ namespace TvSports.Infrastructure.Migrations
                     b.Property<string>("Name")
                         .HasMaxLength(50);
 
-                    b.Property<int?>("ParentId");
+                    b.Property<int>("ZoneForeignKey");
+
+                    b.Property<int?>("ZoneParentForeignKey");
 
                     b.HasKey("Id");
 
                     b.HasIndex("Name")
                         .IsUnique();
 
-                    b.HasIndex("ParentId");
+                    b.HasIndex("ZoneParentForeignKey");
 
                     b.ToTable("Zone");
                 });
@@ -185,35 +203,54 @@ namespace TvSports.Infrastructure.Migrations
                 {
                     b.HasBaseType("TvSports.Core.Entities.ParticipantBase");
 
+                    b.Property<string>("City")
+                        .HasMaxLength(50);
+
+                    b.Property<int>("CompetitionId");
+
+                    b.Property<string>("Nickname")
+                        .HasMaxLength(50);
+
+                    b.Property<string>("Tricode")
+                        .HasMaxLength(3);
+
+                    b.HasIndex("CompetitionId");
 
                     b.ToTable("Team");
 
                     b.HasDiscriminator().HasValue("Team");
                 });
 
+            modelBuilder.Entity("TvSports.Core.Entities.AdditionalTeamInformation", b =>
+                {
+                    b.HasOne("TvSports.Core.Entities.Team")
+                        .WithMany("AddionalTeamInformations")
+                        .HasForeignKey("TeamId");
+                });
+
             modelBuilder.Entity("TvSports.Core.Entities.Competition", b =>
                 {
                     b.HasOne("TvSports.Core.Entities.Sport", "Sport")
                         .WithMany()
-                        .HasForeignKey("SportFK")
+                        .HasForeignKey("SportForeignKey")
                         .OnDelete(DeleteBehavior.Cascade);
 
                     b.HasOne("TvSports.Core.Entities.Zone", "Zone")
                         .WithMany("Competitions")
-                        .HasForeignKey("ZoneFK")
+                        .HasForeignKey("ZoneForeignKey")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 
-            modelBuilder.Entity("TvSports.Core.Entities.Match", b =>
+            modelBuilder.Entity("TvSports.Core.Entities.Game", b =>
                 {
                     b.HasOne("TvSports.Core.Entities.ParticipantBase", "ParticipantAway")
                         .WithMany()
-                        .HasForeignKey("ParticipantAwayId")
+                        .HasForeignKey("ParticipantAwayForeignKey")
                         .OnDelete(DeleteBehavior.Cascade);
 
                     b.HasOne("TvSports.Core.Entities.ParticipantBase", "ParticipantHome")
                         .WithMany()
-                        .HasForeignKey("ParticipantHomeId")
+                        .HasForeignKey("ParticipantHomeForeignKey")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 
@@ -221,7 +258,15 @@ namespace TvSports.Infrastructure.Migrations
                 {
                     b.HasOne("TvSports.Core.Entities.Zone", "Parent")
                         .WithMany("ChildrenZone")
-                        .HasForeignKey("ParentId");
+                        .HasForeignKey("ZoneParentForeignKey");
+                });
+
+            modelBuilder.Entity("TvSports.Core.Entities.Team", b =>
+                {
+                    b.HasOne("TvSports.Core.Entities.Competition", "Competition")
+                        .WithMany()
+                        .HasForeignKey("CompetitionId")
+                        .OnDelete(DeleteBehavior.Cascade);
                 });
 #pragma warning restore 612, 618
         }

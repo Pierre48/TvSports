@@ -12,6 +12,7 @@ namespace TvSports.Core.Interfaces
         IEnumerable<T> ListAll(params string[] includes);
         IEnumerable<T> ListAll(int startIndex, int nbToTake, params string[] includes);
         IEnumerable<T> List(ISpecification<T> spec,int startIndex, int nbToTake, params string[] includes);
+        T GetSingle(Func<T, bool> p, params string[] includes);
         IEnumerable<T> List(ISpecification<T> spec);
         T Add(T entity);
         void Update(T entity);

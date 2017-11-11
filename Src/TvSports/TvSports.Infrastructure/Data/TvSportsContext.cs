@@ -40,7 +40,7 @@ namespace TvSports.Infrastructure.Data
         {
             builder.Entity<Zone>(ConfigureZone);
             builder.Entity<Competition>(ConfigureCompetition);
-            builder.Entity<Match>(ConfigureMatch);
+            builder.Entity<Game>(ConfigureGame);
             builder.Entity<Channel>(ConfigureChannel);
             builder.Entity<ParticipantBase>(ConfigureParticipantBase);
             builder.Entity<Player>(ConfigurePlayer);
@@ -83,11 +83,11 @@ namespace TvSports.Infrastructure.Data
         //var navigation = builder.Metadata.FindNavigation(nameof(Chanel.ChanelNames));
         //navigation.SetPropertyAccessMode(PropertyAccessMode.Field);
 
-        private void ConfigureMatch(EntityTypeBuilder<Match> builder)
+        private void ConfigureGame(EntityTypeBuilder<Game> builder)
         {
-            builder.ToTable("Match");
+            builder.ToTable("Game");
             builder.Property(ci => ci.Id)
-                .ForNpgsqlUseSequenceHiLo("Match_hilo")
+                .ForNpgsqlUseSequenceHiLo("Game_hilo")
                 .IsRequired();
         }
 
